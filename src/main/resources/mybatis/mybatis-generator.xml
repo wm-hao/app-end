@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+
+    <classPathEntry location="D:\Developer\Apache\mvnrepo\mysql\mysql-connector-java\5.1.41\mysql-connector-java-5.1.41.jar"/>
+
+    <context id="context" targetRuntime="MyBatis3Simple">
+        <commentGenerator>
+            <property name="suppressAllComments" value="false"/>
+            <property name="suppressDate" value="true"/>
+        </commentGenerator>
+
+        <jdbcConnection userId="zhh" password="zhh1026" driverClass="com.mysql.jdbc.Driver" connectionURL="jdbc:mysql://localhost:3306/appointment"/>
+
+        <javaTypeResolver>
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <javaModelGenerator targetPackage="zhh.ap.bean" targetProject="D:\Study\BackendProjects\app\src\main\java">
+            <property name="enableSubPackages" value="false"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <sqlMapGenerator targetPackage="mybatis.mapper" targetProject="D:\Study\BackendProjects\app\src\main\resources">
+            <property name="enableSubPackages" value="false"/>
+        </sqlMapGenerator>
+
+        <javaClientGenerator targetPackage="zhh.ap.dao" type="XMLMAPPER" targetProject="D:\Study\BackendProjects\app\src\main\java">
+            <property name="enableSubPackages" value="false"/>
+        </javaClientGenerator>
+
+       <!-- <table tableName="app_hospital" enableCountByExample="false" enableDeleteByExample="false"
+               enableSelectByExample="false" enableUpdateByExample="false" domainObjectName="Hospital"/>-->
+        <table tableName="app_admin" domainObjectName="Admin"/>
+        <table tableName="app_appointment_record" domainObjectName="AppointmentRecord"/>
+       <!-- <table tableName="app_department" domainObjectName="Department"/>-->
+        <table tableName="app_doctor" domainObjectName="Doctor"/>
+        <table tableName="app_user" domainObjectName="User"/>
+        <table tableName="app_schedule" domainObjectName="Schedule"/>
+       <!-- <table tableName="sd_h_area" domainObjectName="StaticDataArea"/>
+        <table tableName="sd_h_level" domainObjectName="StaticDataLevel"/>
+        <table tableName="sd_h_type" domainObjectName="StaticDataType"/>
+        <table tableName="app_evaluation" domainObjectName="Evaluation"/>-->
+
+    </context>
+</generatorConfiguration>
