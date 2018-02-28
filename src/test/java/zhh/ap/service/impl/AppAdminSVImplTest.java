@@ -44,7 +44,7 @@ public class AppAdminSVImplTest {
     @Test
     public void insert() {
         Admin admin = new Admin();
-        admin.setAdminId("000002");
+        admin.setAdminCode("000002");
         admin.setName("朱浩浩2");
         admin.setAdminType(0);
 //        admin.setId(2);

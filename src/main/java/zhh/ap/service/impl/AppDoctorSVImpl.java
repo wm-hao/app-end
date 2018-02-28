@@ -1,5 +1,6 @@
 package zhh.ap.service.impl;
 
+import org.springframework.stereotype.Service;
 import zhh.ap.bean.Doctor;
 import zhh.ap.dao.DoctorMapper;
 import zhh.ap.service.IAppDoctorSV;
@@ -7,6 +8,7 @@ import zhh.ap.service.IAppDoctorSV;
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service("appDoctorSV")
 public class AppDoctorSVImpl implements IAppDoctorSV{
     @Resource
     private DoctorMapper dao;

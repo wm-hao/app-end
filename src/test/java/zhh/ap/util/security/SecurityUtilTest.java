@@ -9,7 +9,7 @@ public class SecurityUtilTest {
 
     @Test
     public void getSHA256Str() {
-        String str = "Hello ZHH";
+        String str = "zhh";
         String encodedStr = SecurityUtil.getSHA256Str(str);
         System.out.println("Get SHA256 Str : " + encodedStr);
         System.out.println(SecurityUtil.getSHA256Str("Hello ZHH").equals(encodedStr));

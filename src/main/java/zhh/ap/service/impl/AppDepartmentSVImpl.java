@@ -1,5 +1,6 @@
 package zhh.ap.service.impl;
 
+import org.springframework.stereotype.Service;
 import zhh.ap.bean.Department;
 import zhh.ap.dao.DepartmentMapper;
 import zhh.ap.service.IAppDepartmentSV;
@@ -7,6 +8,7 @@ import zhh.ap.service.IAppDepartmentSV;
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service("appDepartmentSV")
 public class AppDepartmentSVImpl implements IAppDepartmentSV {
     @Resource
     private DepartmentMapper dao;

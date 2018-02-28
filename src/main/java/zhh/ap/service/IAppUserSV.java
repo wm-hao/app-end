@@ -15,4 +15,8 @@ public interface IAppUserSV {
 
     User selectByPrimaryKey(Integer id);
 
+    User selectByPhoneNumber(String phoneNumber);
+
+    boolean validate(String phoneNumber, String password);
+
 }

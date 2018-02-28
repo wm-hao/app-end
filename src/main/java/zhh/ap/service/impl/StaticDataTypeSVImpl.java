@@ -1,5 +1,6 @@
 package zhh.ap.service.impl;
 
+import org.springframework.stereotype.Service;
 import zhh.ap.bean.StaticDataType;
 import zhh.ap.dao.StaticDataTypeMapper;
 import zhh.ap.service.IStaticDataTypeSV;
@@ -7,6 +8,7 @@ import zhh.ap.service.IStaticDataTypeSV;
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service("staticDataTypeSV")
 public class StaticDataTypeSVImpl implements IStaticDataTypeSV {
     @Resource
     private StaticDataTypeMapper dao;

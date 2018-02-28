@@ -4,7 +4,7 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
 <generatorConfiguration>
 
-    <classPathEntry location="C:\Users\44882\.m2\repository\mysql\mysql-connector-java\5.1.41\mysql-connector-java-5.1.41.jar"/>
+    <classPathEntry location="D:\Developer\Apache\mvnrepo\mysql\mysql-connector-java\5.1.41\mysql-connector-java-5.1.41.jar"/>
 
     <context id="context" targetRuntime="MyBatis3Simple">
         <commentGenerator>
@@ -18,16 +18,16 @@
             <property name="forceBigDecimals" value="false"/>
         </javaTypeResolver>
 
-        <javaModelGenerator targetPackage="zhh.ap.bean" targetProject="E:\Study\BackendProjects\app\src\main\java">
+        <javaModelGenerator targetPackage="zhh.ap.bean" targetProject="D:\Study\BackendProjects\app\src\main\java">
             <property name="enableSubPackages" value="false"/>
             <property name="trimStrings" value="true"/>
         </javaModelGenerator>
 
-        <sqlMapGenerator targetPackage="mybatis.mapper" targetProject="E:\Study\BackendProjects\app\src\main\resources">
+        <sqlMapGenerator targetPackage="mybatis.mapper" targetProject="D:\Study\BackendProjects\app\src\main\resources">
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator targetPackage="zhh.ap.dao" type="XMLMAPPER" targetProject="E:\Study\BackendProjects\app\src\main\java">
+        <javaClientGenerator targetPackage="zhh.ap.dao" type="XMLMAPPER" targetProject=":\Study\BackendProjects\app\src\main\java">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 

@@ -1,5 +1,6 @@
 package zhh.ap.service.impl;
 
+import org.springframework.stereotype.Service;
 import zhh.ap.bean.StaticDataLevel;
 import zhh.ap.dao.StaticDataLevelMapper;
 import zhh.ap.service.IStaticDataLevelSV;
@@ -7,6 +8,7 @@ import zhh.ap.service.IStaticDataLevelSV;
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service("staticDataLevelSV")
 public class StaticDataLevelSVImpl implements IStaticDataLevelSV {
     @Resource
     private StaticDataLevelMapper dao;

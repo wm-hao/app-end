@@ -1,5 +1,6 @@
 package zhh.ap.service.impl;
 
+import org.springframework.stereotype.Service;
 import zhh.ap.bean.AppointmentRecord;
 import zhh.ap.dao.AppointmentRecordMapper;
 import zhh.ap.service.IAppRecordSV;
@@ -7,6 +8,7 @@ import zhh.ap.service.IAppRecordSV;
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service("appRecordSV")
 public class AppRecordSVImpl implements IAppRecordSV {
     @Resource
     private AppointmentRecordMapper dao;

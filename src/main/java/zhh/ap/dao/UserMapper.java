@@ -1,7 +1,8 @@
 package zhh.ap.dao;
 
-import java.util.List;
 import zhh.ap.bean.User;
+
+import java.util.List;
 
 public interface UserMapper {
     /**
@@ -43,4 +44,11 @@ public interface UserMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(User record);
+
+    /**
+     * 根据手机号查询用户密码
+     * @param phoneNumber
+     * @return
+     */
+    User selectByPhoneNumber(String phoneNumber);
 }

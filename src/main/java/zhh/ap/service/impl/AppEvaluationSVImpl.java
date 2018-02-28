@@ -1,5 +1,6 @@
 package zhh.ap.service.impl;
 
+import org.springframework.stereotype.Service;
 import zhh.ap.bean.Evaluation;
 import zhh.ap.dao.EvaluationMapper;
 import zhh.ap.service.IAppEvaluationSV;
@@ -7,6 +8,7 @@ import zhh.ap.service.IAppEvaluationSV;
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service("appEvaluationSV")
 public class AppEvaluationSVImpl implements IAppEvaluationSV {
     @Resource
     private EvaluationMapper dao;

@@ -1,5 +1,6 @@
 package zhh.ap.service.impl;
 
+import org.springframework.stereotype.Service;
 import zhh.ap.bean.StaticDataArea;
 import zhh.ap.dao.StaticDataAreaMapper;
 import zhh.ap.service.IStaticDataAreaSV;
@@ -7,6 +8,7 @@ import zhh.ap.service.IStaticDataAreaSV;
 import javax.annotation.Resource;
 import java.util.List;
 
+@Service("staticDataAreaSV")
 public class StaticDataAreaSVImpl implements IStaticDataAreaSV{
     @Resource
     private StaticDataAreaMapper dao;
