@@ -60,7 +60,8 @@ public class AppUserSVImpTest {
 
     @Test
     public void selectByPhoneNumber() {
-        String phoneNumber = "132180200181";
-        System.out.println(userSV.selectByPhoneNumber(phoneNumber));
+//        String phoneNumber = "132180200181";
+        String phoneNumber = null;
+        System.out.println(userSV.selectByPhoneNumber(phoneNumber).getPassword());
     }
 }

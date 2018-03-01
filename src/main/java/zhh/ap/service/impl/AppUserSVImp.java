@@ -46,6 +46,7 @@ public class AppUserSVImp implements IAppUserSV {
 
     @Override
     public boolean validate(String phoneNumber, String password) {
-        return SecurityUtil.getSHA256Str(password).equals(selectByPhoneNumber(phoneNumber).getPassword());
+        User user = selectByPhoneNumber(phoneNumber);
+        return SecurityUtil.getSHA256Str(password).equals(user == null?"":user.getPassword());
     }
 }

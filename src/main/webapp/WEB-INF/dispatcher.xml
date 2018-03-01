@@ -20,4 +20,6 @@
                      allowed-headers="Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
                      allow-credentials="true" />
     </mvc:cors>
+
+    <mvc:resources location="/assets/img/" mapping="/img/**"/>
 </beans>
