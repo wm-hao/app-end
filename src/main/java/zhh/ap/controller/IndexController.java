@@ -10,4 +10,14 @@ public class IndexController {
     public String index() {
         return "index";
     }
+
+    @RequestMapping("/elementUI")
+    public String elementUI() {
+        return "elementUI";
+    }
+
+    @RequestMapping("/b4")
+    public String b4() {
+        return "b4";
+    }
 }
