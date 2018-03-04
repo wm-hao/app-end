@@ -352,4 +352,24 @@ public class User {
     public void setPhoneNumber(String phoneNumber) {
         this.phoneNumber = phoneNumber == null ? null : phoneNumber.trim();
     }
+
+    @Override
+    public String toString() {
+        return "User{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", age=" + age +
+                ", qq='" + qq + '\'' +
+                ", email='" + email + '\'' +
+                ", address='" + address + '\'' +
+                ", userCode='" + userCode + '\'' +
+                ", sex='" + sex + '\'' +
+                ", password='" + password + '\'' +
+                ", idcard='" + idcard + '\'' +
+                ", phoneNumber='" + phoneNumber + '\'' +
+                '}';
+    }
+
+    public User() {
+    }
 }

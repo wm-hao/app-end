@@ -2,18 +2,16 @@ package zhh.ap.service.impl;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
-import org.springframework.test.context.junit4.SpringRunner;
 import zhh.ap.bean.Admin;
 import zhh.ap.service.IAppAdminSV;
 import zhh.ap.util.security.SecurityUtil;
 
 import java.util.List;
 
-@RunWith(SpringRunner.class)
+//@RunWith(SpringRunner.class)
 @ContextConfiguration(locations = {"classpath:spring/root.xml"})
 public class AppAdminSVImplTest {
 
