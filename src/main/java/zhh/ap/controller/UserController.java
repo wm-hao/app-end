@@ -5,8 +5,9 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.web.bind.annotation.*;
 import zhh.ap.bean.User;
 import zhh.ap.service.IAppUserSV;
+import zhh.ap.util.security.SecurityUtil;
+import zhh.ap.valuebean.AppConstants;
 import zhh.ap.valuebean.HttpReqResult;
-import zhh.ap.valuebean.UserLoginInfo;
 
 import javax.annotation.Resource;
 
@@ -25,28 +26,25 @@ public class UserController {
 
     @RequestMapping(path = {"/validateLogin"})
     public HttpReqResult validateLogin(@RequestParam String phoneNumber, @RequestParam String password) {
+        _log.info("验证用户信息，手机号：" + phoneNumber + ";密码：" + password);
         HttpReqResult HttpReqResult = new HttpReqResult();
-        HttpReqResult.setResult(userSV.validate(phoneNumber, password) ? "true" : "false");
+        HttpReqResult.setResult(userSV.validate(phoneNumber, password) ? zhh.ap.valuebean.HttpReqResult.SUCCESS : zhh.ap.valuebean.HttpReqResult.FAIL);
         return HttpReqResult;
     }
 
-    @RequestMapping(path = {"/validateLogin2"})
-    public HttpReqResult validateLogin2(UserLoginInfo userLoginInfo) {
-        HttpReqResult HttpReqResult = new HttpReqResult();
-        System.out.println(userLoginInfo);
-        HttpReqResult.setResult(userSV.validate(userLoginInfo.getPhoneNumber(), userLoginInfo.getPassword()) ? "true" : "false");
-        return HttpReqResult;
-    }
-
-    @RequestMapping("/home")
-    public String home() {
-        return "index";
-    }
-
-    @RequestMapping(value = "/add", method = {RequestMethod.POST,RequestMethod.OPTIONS})
-    public HttpReqResult addUser(@ModelAttribute User user) {
-        _log.info("req post data:" + user);
+    @RequestMapping(value = "/add", method = {RequestMethod.POST, RequestMethod.OPTIONS})
+    public HttpReqResult addUser(@RequestBody User user) {
+        _log.info("接收到的注册用户信息:" + user);
+        user.setPassword(SecurityUtil.getSHA256Str(user.getPassword()));
+        user.setSex(user.getSex().equals(String.valueOf(AppConstants.SEX_MAN_FLAG)) ? AppConstants.SEX_MAN_STR : AppConstants.SEX_WOMAN_STR);
         userSV.insert(user);
         return new HttpReqResult(HttpReqResult.SUCCESS);
     }
+
+    @RequestMapping("/selectByPhoneNumber")
+    public User selectByPhoneNumber(@RequestParam String phoneNumber) {
+        _log.info("根据手机号查询用户:" + phoneNumber);
+        return userSV.selectByPhoneNumber(phoneNumber);
+    }
+
 }
