@@ -8,6 +8,7 @@ import zhh.ap.service.IAppUserSV;
 import zhh.ap.util.security.SecurityUtil;
 import zhh.ap.valuebean.AppConstants;
 import zhh.ap.valuebean.HttpReqResult;
+import zhh.ap.valuebean.UserLoginInfo;
 
 import javax.annotation.Resource;
 
@@ -24,11 +25,11 @@ public class UserController {
         return userSV.selectByPrimaryKey(Integer.valueOf(id));
     }
 
-    @RequestMapping(path = {"/validateLogin"})
-    public HttpReqResult validateLogin(@RequestParam String phoneNumber, @RequestParam String password) {
-        _log.info("验证用户信息，手机号：" + phoneNumber + ";密码：" + password);
+    @RequestMapping(path = {"/validateLogin"}, method = {RequestMethod.POST, RequestMethod.OPTIONS})
+    public HttpReqResult validateLogin(@RequestBody UserLoginInfo userLoginInfo) {
+        _log.info("验证用户信息:" + userLoginInfo);
         HttpReqResult HttpReqResult = new HttpReqResult();
-        HttpReqResult.setResult(userSV.validate(phoneNumber, password) ? zhh.ap.valuebean.HttpReqResult.SUCCESS : zhh.ap.valuebean.HttpReqResult.FAIL);
+        HttpReqResult.setResult(userSV.validate(userLoginInfo.getPhoneNumber(), userLoginInfo.getPassword()) ? zhh.ap.valuebean.HttpReqResult.SUCCESS : zhh.ap.valuebean.HttpReqResult.FAIL);
         return HttpReqResult;
     }
 
@@ -41,10 +42,10 @@ public class UserController {
         return new HttpReqResult(HttpReqResult.SUCCESS);
     }
 
-    @RequestMapping("/selectByPhoneNumber")
-    public User selectByPhoneNumber(@RequestParam String phoneNumber) {
-        _log.info("根据手机号查询用户:" + phoneNumber);
-        return userSV.selectByPhoneNumber(phoneNumber);
+    @RequestMapping(value = "/selectByPhoneNumber", method = {RequestMethod.POST, RequestMethod.OPTIONS})
+    public User selectByPhoneNumber(@RequestBody UserLoginInfo userLoginInfo) {
+        _log.info("根据手机号查询用户:" + userLoginInfo.getPhoneNumber());
+        return userSV.selectByPhoneNumber(userLoginInfo.getPhoneNumber());
     }
 
 }
