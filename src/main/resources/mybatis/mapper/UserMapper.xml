@@ -79,4 +79,8 @@
   <select id="selectByPhoneNumber" parameterType="java.lang.String" resultMap="BaseResultMap">
       SELECT id, name, age, qq, email, address, user_code, sex, password, IDcard, phone_number from app_user where phone_number = #{phoneNumber}
   </select>
+  
+  <select id="selectByPhoneNumberAndEmail" resultMap="BaseResultMap">
+      SELECT id, name, age, qq, email, address, user_code, sex, password, IDcard, phone_number from app_user where phone_number = #{0} and email = #{1}
+  </select>
 </mapper>

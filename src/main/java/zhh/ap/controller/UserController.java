@@ -5,8 +5,11 @@ import org.apache.commons.logging.LogFactory;
 import org.springframework.web.bind.annotation.*;
 import zhh.ap.bean.User;
 import zhh.ap.service.IAppUserSV;
+import zhh.ap.util.AppUtil;
+import zhh.ap.util.email.EmailUtil;
 import zhh.ap.util.security.SecurityUtil;
 import zhh.ap.valuebean.AppConstants;
+import zhh.ap.valuebean.ForgetPwdUser;
 import zhh.ap.valuebean.HttpReqResult;
 import zhh.ap.valuebean.UserLoginInfo;
 
@@ -19,6 +22,8 @@ public class UserController {
     private static transient Log _log = LogFactory.getLog(UserController.class);
     @Resource(name = "appUserSV")
     private IAppUserSV userSV;
+    @Resource(name = "emailUtil")
+    private EmailUtil emailUtil;
 
     @RequestMapping("/userInfo")
     public User getUserInfo(@RequestParam String id) {
@@ -48,4 +53,32 @@ public class UserController {
         return userSV.selectByPhoneNumber(userLoginInfo.getPhoneNumber());
     }
 
+    @RequestMapping(value = "/resolveForgotPassword", method = {RequestMethod.POST, RequestMethod.OPTIONS})
+    public HttpReqResult updateUser(@RequestBody ForgetPwdUser forgetPwdUser) {
+        HttpReqResult httpReqResult = new HttpReqResult();
+        _log.info("更新用户信息：" + forgetPwdUser);
+        User user = userSV.selectByPhoneNumberAndEmail(forgetPwdUser.getPhoneNumber(), forgetPwdUser.getEmail());
+        if(user == null) {
+            httpReqResult.setResult(HttpReqResult.FAIL);
+        }else{
+            user.setPassword(SecurityUtil.getSHA256Str(forgetPwdUser.getPassword()));
+            userSV.updateByPrimaryKey(user);
+            httpReqResult.setResult(HttpReqResult.SUCCESS);
+        }
+        return httpReqResult;
+    }
+
+    @RequestMapping(value = "/getValidateCode", method = {RequestMethod.POST, RequestMethod.OPTIONS})
+    public HttpReqResult sendValidateCode(@RequestBody ForgetPwdUser forgetPwdUser) {
+        HttpReqResult httpReqResult = new HttpReqResult();
+        String validateCode = AppUtil.getRandomValidateCode(6);
+        boolean sendResult = emailUtil.sendEmail(AppConstants.EMAIL_TEXT_PREFIX + validateCode + AppConstants.EMAIL_TEXT_SUBFIX, forgetPwdUser.getEmail(), AppConstants.EMAIL_SUBJECT);
+        if(sendResult) {
+            httpReqResult.setResult(HttpReqResult.SUCCESS);
+            httpReqResult.setData(validateCode);
+        }else{
+            httpReqResult.setResult(HttpReqResult.FAIL);
+        }
+        return httpReqResult;
+    }
 }

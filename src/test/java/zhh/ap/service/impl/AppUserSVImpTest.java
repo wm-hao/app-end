@@ -2,13 +2,15 @@ package zhh.ap.service.impl;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.test.context.ContextConfiguration;
+import org.springframework.test.context.junit4.SpringRunner;
 import zhh.ap.bean.User;
 import zhh.ap.service.IAppUserSV;
 
-//@RunWith(SpringRunner.class)
+@RunWith(SpringRunner.class)
 @ContextConfiguration(locations = {"classpath:spring/root.xml"})
 public class AppUserSVImpTest {
 
@@ -59,5 +61,12 @@ public class AppUserSVImpTest {
 //        String phoneNumber = "132180200181";
         String phoneNumber = null;
         System.out.println(userSV.selectByPhoneNumber(phoneNumber).getPassword());
+    }
+
+    @Test
+    public void selectByPhoneNumberAndEmail() {
+        String phone = "132180200181";
+        String email = "448826602@qq.com";
+        System.out.println(userSV.selectByPhoneNumberAndEmail(phone, email));
     }
 }

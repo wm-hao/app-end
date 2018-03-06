@@ -21,8 +21,6 @@ public class InitTest {
         sv.selectAll();
         Thread.sleep(2000);
         System.out.println("睡醒了");
-        InitApp initTest = (InitApp) ctx.getBean("initApp");
-        System.out.println(initTest.getClass().getName());
     }
 
 }

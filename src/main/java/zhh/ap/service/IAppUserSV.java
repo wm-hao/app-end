@@ -19,4 +19,6 @@ public interface IAppUserSV {
 
     boolean validate(String phoneNumber, String password);
 
+    User selectByPhoneNumberAndEmail(String phoneNumber, String email);
+
 }

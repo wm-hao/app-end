@@ -49,4 +49,9 @@ public class AppUserSVImp implements IAppUserSV {
         User user = selectByPhoneNumber(phoneNumber);
         return SecurityUtil.getSHA256Str(password).equals(user == null?"":user.getPassword());
     }
+
+    @Override
+    public User selectByPhoneNumberAndEmail(String phoneNumber, String email) {
+        return dao.selectByPhoneNumberAndEmail(phoneNumber, email);
+    }
 }

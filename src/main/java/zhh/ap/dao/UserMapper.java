@@ -51,4 +51,12 @@ public interface UserMapper {
      * @return
      */
     User selectByPhoneNumber(String phoneNumber);
+
+    /**
+     * 根据手机号和邮箱查询用户信息
+     * @param phoneNumber
+     * @param email
+     * @return
+     */
+    User selectByPhoneNumberAndEmail(String phoneNumber, String email);
 }
