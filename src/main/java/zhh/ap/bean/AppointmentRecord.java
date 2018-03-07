@@ -512,4 +512,26 @@ public class AppointmentRecord {
     public void setDepartmentName(String departmentName) {
         this.departmentName = departmentName == null ? null : departmentName.trim();
     }
+
+    @Override
+    public String toString() {
+        return "AppointmentRecord{" +
+                "id=" + id +
+                ", userCode='" + userCode + '\'' +
+                ", userName='" + userName + '\'' +
+                ", optTime='" + optTime + '\'' +
+                ", appointTime='" + appointTime + '\'' +
+                ", doctorCode='" + doctorCode + '\'' +
+                ", doctorName='" + doctorName + '\'' +
+                ", hospital='" + hospital + '\'' +
+                ", department='" + department + '\'' +
+                ", disease='" + disease + '\'' +
+                ", finishTime='" + finishTime + '\'' +
+                ", failReason='" + failReason + '\'' +
+                ", hospitalCode='" + hospitalCode + '\'' +
+                ", hospitalName='" + hospitalName + '\'' +
+                ", departmentCode='" + departmentCode + '\'' +
+                ", departmentName='" + departmentName + '\'' +
+                '}';
+    }
 }

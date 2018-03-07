@@ -37,4 +37,9 @@ public class AppRecordSVImpl implements IAppRecordSV {
     public AppointmentRecord selectByPrimaryKey(Integer id) {
         return dao.selectByPrimaryKey(id);
     }
+
+    @Override
+    public List<AppointmentRecord> selectByUsercode(String userCode) {
+        return dao.selectByUsercode(userCode);
+    }
 }

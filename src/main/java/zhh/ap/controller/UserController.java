@@ -43,6 +43,7 @@ public class UserController {
         _log.info("接收到的注册用户信息:" + user);
         user.setPassword(SecurityUtil.getSHA256Str(user.getPassword()));
         user.setSex(user.getSex().equals(String.valueOf(AppConstants.SEX_MAN_FLAG)) ? AppConstants.SEX_MAN_STR : AppConstants.SEX_WOMAN_STR);
+        user.setUserCode(user.getPhoneNumber());
         userSV.insert(user);
         return new HttpReqResult(HttpReqResult.SUCCESS);
     }

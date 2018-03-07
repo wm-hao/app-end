@@ -15,4 +15,6 @@ public interface IAppRecordSV {
 
     AppointmentRecord selectByPrimaryKey(Integer id);
 
+    List<AppointmentRecord> selectByUsercode(String userCode);
+
 }

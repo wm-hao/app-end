@@ -43,4 +43,6 @@ public interface AppointmentRecordMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(AppointmentRecord record);
+
+    List<AppointmentRecord> selectByUsercode(String userCode);
 }
