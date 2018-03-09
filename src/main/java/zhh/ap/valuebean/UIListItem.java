@@ -3,6 +3,7 @@ package zhh.ap.valuebean;
 public class UIListItem {
     private String name;
     private String content;
+    private String key;
 
     public String getName() {
         return name;
@@ -28,11 +29,20 @@ public class UIListItem {
                 '}';
     }
 
-    public UIListItem(String name, String content) {
+    public UIListItem(String name, String content, String key) {
         this.name = name;
         this.content = content;
+        this.key = key;
     }
 
     public UIListItem() {
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
     }
 }

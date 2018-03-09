@@ -87,14 +87,14 @@ public class UserController {
         User user = userSV.selectByPhoneNumber(userLoginInfo.getPhoneNumber());
         List<UIListItem> uiListItems = new ArrayList<>();
         if(user.getId() > 0) {
-            uiListItems.add(new UIListItem("姓名",user.getName()));
-            uiListItems.add(new UIListItem("性别",user.getSex()));
-            uiListItems.add(new UIListItem("邮箱",user.getEmail()));
-            uiListItems.add(new UIListItem("住址",user.getAddress()));
-            uiListItems.add(new UIListItem("年龄",String.valueOf(user.getAge())));
-            uiListItems.add(new UIListItem("身份证号", user.getIdcard()));
-            uiListItems.add(new UIListItem("手机号码",user.getPhoneNumber()));
-            uiListItems.add(new UIListItem("QQ",user.getQq()));
+            uiListItems.add(new UIListItem("姓名",user.getName(),"name"));
+            uiListItems.add(new UIListItem("性别",user.getSex(),"sex"));
+            uiListItems.add(new UIListItem("邮箱",user.getEmail(),"email"));
+            uiListItems.add(new UIListItem("住址",user.getAddress(),"address"));
+            uiListItems.add(new UIListItem("年龄",String.valueOf(user.getAge()),"age"));
+            uiListItems.add(new UIListItem("身份证号", user.getIdcard(),"idCard"));
+            uiListItems.add(new UIListItem("手机号码",user.getPhoneNumber(),"phoneNumber"));
+            uiListItems.add(new UIListItem("QQ",user.getQq(),"qq"));
         }
         return uiListItems;
     }
