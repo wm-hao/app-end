@@ -21,4 +21,6 @@ public interface IAppUserSV {
 
     User selectByPhoneNumberAndEmail(String phoneNumber, String email);
 
+    User selectUserInfoByIdCard(String idCard);
+
 }

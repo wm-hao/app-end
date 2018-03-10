@@ -22,7 +22,7 @@ public class RecordController {
 
     @RequestMapping(value = "selectByUserCode", method = {RequestMethod.OPTIONS, RequestMethod.POST})
     public List<RespRecord> selectByUserCode(@RequestBody UserLoginInfo userLoginInfo) {
-        List<AppointmentRecord> records = recordSV.selectByUsercode(userLoginInfo.getPhoneNumber());
+        List<AppointmentRecord> records = recordSV.selectByUsercode(userLoginInfo.getUserCode());
         List<RespRecord> results = new ArrayList<>();
         for (AppointmentRecord record : records) {
             RespRecord result = new RespRecord();

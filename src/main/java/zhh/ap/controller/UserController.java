@@ -1,5 +1,6 @@
 package zhh.ap.controller;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 import org.springframework.web.bind.annotation.*;
@@ -84,18 +85,61 @@ public class UserController {
 
     @RequestMapping(value = "/getUserInfoInList", method = {RequestMethod.POST, RequestMethod.OPTIONS})
     public  List<UIListItem> getUserInfoInList(@RequestBody UserLoginInfo userLoginInfo) {
-        User user = userSV.selectByPhoneNumber(userLoginInfo.getPhoneNumber());
+        User user = userSV.selectUserInfoByIdCard(userLoginInfo.getIdCard());
         List<UIListItem> uiListItems = new ArrayList<>();
         if(user.getId() > 0) {
-            uiListItems.add(new UIListItem("姓名",user.getName(),"name"));
-            uiListItems.add(new UIListItem("性别",user.getSex(),"sex"));
-            uiListItems.add(new UIListItem("邮箱",user.getEmail(),"email"));
-            uiListItems.add(new UIListItem("住址",user.getAddress(),"address"));
-            uiListItems.add(new UIListItem("年龄",String.valueOf(user.getAge()),"age"));
-            uiListItems.add(new UIListItem("身份证号", user.getIdcard(),"idCard"));
-            uiListItems.add(new UIListItem("手机号码",user.getPhoneNumber(),"phoneNumber"));
-            uiListItems.add(new UIListItem("QQ",user.getQq(),"qq"));
+            uiListItems.add(new UIListItem("姓名",user.getName(),"0"));
+            uiListItems.add(new UIListItem("性别",user.getSex(),"1"));
+            uiListItems.add(new UIListItem("年龄",String.valueOf(user.getAge()),"2"));
+            uiListItems.add(new UIListItem("身份证号", user.getIdcard(),"3"));
+            uiListItems.add(new UIListItem("住址",user.getAddress(),"4"));
+            uiListItems.add(new UIListItem("手机号码",user.getPhoneNumber(),"5"));
+            uiListItems.add(new UIListItem("QQ",user.getQq(),"6"));
+            uiListItems.add(new UIListItem("邮箱",user.getEmail(),"7"));
         }
         return uiListItems;
+    }
+
+    @RequestMapping(value = "/selectUserInfoByIdCard", method = {RequestMethod.POST, RequestMethod.OPTIONS})
+    public User selectUserInfoByIdCard(@RequestBody UserLoginInfo userLoginInfo) {
+        User user = userSV.selectUserInfoByIdCard(userLoginInfo.getIdCard());
+        return user;
+    }
+
+    @RequestMapping(value = "/updateUserByColumn", method = {RequestMethod.POST, RequestMethod.OPTIONS})
+    public HttpReqResult updateUserByColumn(@RequestBody UserLoginInfo userLoginInfo) {
+        HttpReqResult reqResult = new HttpReqResult(HttpReqResult.SUCCESS);
+        User user = userSV.selectUserInfoByIdCard(userLoginInfo.getIdCard());
+        _log.info("接收到的LoginUserInfo:" + userLoginInfo);
+        if(userLoginInfo.getKey().equals("4")) {
+            user.setAddress(userLoginInfo.getValue());
+        }
+        if(userLoginInfo.getKey().equals("5")) {
+            user.setPhoneNumber(userLoginInfo.getValue());
+        }
+        if(userLoginInfo.getKey().equals("6")) {
+            user.setQq(userLoginInfo.getValue());
+        }
+        if(userLoginInfo.getKey().equals("7")) {
+            user.setEmail(userLoginInfo.getValue());
+        }
+        if(userLoginInfo.getKey().equals("8")) {
+            user.setPassword(SecurityUtil.getSHA256Str(userLoginInfo.getPassword()));
+        }
+        userSV.updateByPrimaryKey(user);
+        return reqResult;
+    }
+
+    @RequestMapping(value = "/validatePassword", method = {RequestMethod.POST, RequestMethod.OPTIONS})
+    public HttpReqResult validatePassword(@RequestBody UserLoginInfo userLoginInfo) {
+        HttpReqResult reqResult = new HttpReqResult(HttpReqResult.FAIL);
+        User user = userSV.selectUserInfoByIdCard(userLoginInfo.getIdCard());
+        _log.info("接收到的LoginUserInfo:" + userLoginInfo);
+        if(StringUtils.isNotBlank(userLoginInfo.getPassword())) {
+            if(SecurityUtil.getSHA256Str(userLoginInfo.getPassword()).equals(user.getPassword())) {
+                reqResult.setResult(HttpReqResult.SUCCESS);
+            }
+        }
+        return reqResult;
     }
 }

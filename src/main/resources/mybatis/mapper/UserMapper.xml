@@ -83,4 +83,8 @@
   <select id="selectByPhoneNumberAndEmail" resultMap="BaseResultMap">
       SELECT id, name, age, qq, email, address, user_code, sex, password, IDcard, phone_number from app_user where phone_number = #{0} and email = #{1}
   </select>
+
+  <select id="selectUserInfoByIdCard" resultMap="BaseResultMap">
+    SELECT * FROM app_user where IDcard = #{0}
+  </select>
 </mapper>

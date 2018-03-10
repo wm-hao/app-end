@@ -29,7 +29,7 @@ public class UIListItem {
                 '}';
     }
 
-    public UIListItem(String name, String content, String key) {
+    public  UIListItem(String name, String content, String key) {
         this.name = name;
         this.content = content;
         this.key = key;

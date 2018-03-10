@@ -54,4 +54,9 @@ public class AppUserSVImp implements IAppUserSV {
     public User selectByPhoneNumberAndEmail(String phoneNumber, String email) {
         return dao.selectByPhoneNumberAndEmail(phoneNumber, email);
     }
+
+    @Override
+    public User selectUserInfoByIdCard(String idCard) {
+        return dao.selectUserInfoByIdCard(idCard);
+    }
 }
