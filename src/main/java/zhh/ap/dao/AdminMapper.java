@@ -43,4 +43,10 @@ public interface AdminMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Admin record);
+
+    Admin selectByPhoneNumberAndEmail(String phoneNumber, String email);
+
+    Admin selectByIdCard(String idCard);
+
+    Admin selectByPhoneNumber(String phoneNumber);
 }

@@ -15,4 +15,11 @@ public interface IAppAdminSV {
 
     Admin selectByPrimaryKey(Integer id);
 
+    boolean validate(String phoneNumber, String password);
+
+    Admin selectByPhoneNumberAndEmail(String phoneNumber, String email);
+
+    Admin selectByIdCard(String idCard);
+
+    Admin selectByPhoneNumber(String phoneNumber);
 }

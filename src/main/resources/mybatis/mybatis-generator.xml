@@ -27,22 +27,22 @@
             <property name="enableSubPackages" value="false"/>
         </sqlMapGenerator>
 
-        <javaClientGenerator targetPackage="zhh.ap.dao" type="XMLMAPPER" targetProject=":\Study\BackendProjects\app\src\main\java">
+        <javaClientGenerator targetPackage="zhh.ap.dao" type="XMLMAPPER" targetProject="D:\Study\BackendProjects\app\src\main\java">
             <property name="enableSubPackages" value="false"/>
         </javaClientGenerator>
 
        <!-- <table tableName="app_hospital" enableCountByExample="false" enableDeleteByExample="false"
                enableSelectByExample="false" enableUpdateByExample="false" domainObjectName="Hospital"/>-->
-        <table tableName="app_admin" domainObjectName="Admin"/>
-        <table tableName="app_appointment_record" domainObjectName="AppointmentRecord"/>
+        <!--<table tableName="app_admin" domainObjectName="Admin"/>-->
+        <!--<table tableName="app_appointment_record" domainObjectName="AppointmentRecord"/>-->
        <!-- <table tableName="app_department" domainObjectName="Department"/>-->
         <table tableName="app_doctor" domainObjectName="Doctor"/>
-        <table tableName="app_user" domainObjectName="User"/>
-        <table tableName="app_schedule" domainObjectName="Schedule"/>
+        <!--<table tableName="app_user" domainObjectName="User"/>-->
+        <!--<table tableName="app_schedule" domainObjectName="Schedule"/>-->
        <!-- <table tableName="sd_h_area" domainObjectName="StaticDataArea"/>
         <table tableName="sd_h_level" domainObjectName="StaticDataLevel"/>
-        <table tableName="sd_h_type" domainObjectName="StaticDataType"/>
-        <table tableName="app_evaluation" domainObjectName="Evaluation"/>-->
-
+        <table tableName="sd_h_type" domainObjectName="StaticDataType"/> -->
+        <!--<table tableName="app_evaluation" domainObjectName="Evaluation"/>-->
+        <!--<table tableName="app_department_hospital" domainObjectName="DepartHospitalRel"/>-->
     </context>
 </generatorConfiguration>

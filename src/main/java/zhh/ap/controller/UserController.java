@@ -34,7 +34,13 @@ public class UserController {
     public HttpReqResult validateLogin(@RequestBody UserLoginInfo userLoginInfo) {
         _log.info("验证用户信息:" + userLoginInfo);
         HttpReqResult HttpReqResult = new HttpReqResult();
-        HttpReqResult.setResult(userSV.validate(userLoginInfo.getPhoneNumber(), userLoginInfo.getPassword()) ? zhh.ap.valuebean.HttpReqResult.SUCCESS : zhh.ap.valuebean.HttpReqResult.FAIL);
+        boolean success = userSV.validate(userLoginInfo.getPhoneNumber(), userLoginInfo.getPassword());
+        if(success) {
+            HttpReqResult.setResult(zhh.ap.valuebean.HttpReqResult.SUCCESS);
+        }else  {
+            HttpReqResult.setResult(zhh.ap.valuebean.HttpReqResult.FAIL);
+            HttpReqResult.setData("您输入的用户名密码不正确！");
+        }
         return HttpReqResult;
     }
 
@@ -123,7 +129,7 @@ public class UserController {
         if(userLoginInfo.getKey().equals("7")) {
             user.setEmail(userLoginInfo.getValue());
         }
-        if(userLoginInfo.getKey().equals("8")) {
+        if(userLoginInfo.getKey().equals("-1")) {
             user.setPassword(SecurityUtil.getSHA256Str(userLoginInfo.getPassword()));
         }
         userSV.updateByPrimaryKey(user);
@@ -142,4 +148,34 @@ public class UserController {
         }
         return reqResult;
     }
+
+    @RequestMapping(value = "/selectAll", method = {RequestMethod.POST, RequestMethod.OPTIONS})
+    public List<User> selectAll() throws Exception {
+        _log.info("查询所有用户");
+        List<User> users = userSV.selectAll();
+        return users;
+    }
+
+    @RequestMapping(value = "/deleteByIdcard", method = {RequestMethod.POST, RequestMethod.OPTIONS})
+    public HttpReqResult deleteByIdcard(@RequestBody User user) throws Exception {
+        _log.info("删除用户根据身份证");
+        return new HttpReqResult(userSV.deleteByPrimaryKey(user.getId())==1?HttpReqResult.SUCCESS:HttpReqResult.FAIL);
+    }
+
+    @RequestMapping(value = "/update", method = {RequestMethod.POST, RequestMethod.OPTIONS})
+    public HttpReqResult update(@RequestBody User user){
+        _log.info("更新用户根据身份证");
+        return new HttpReqResult(userSV.updateByPrimaryKey(user)==1?HttpReqResult.SUCCESS:HttpReqResult.FAIL);
+    }
+
+    @RequestMapping(value = "/updateAll", method = {RequestMethod.POST, RequestMethod.OPTIONS})
+    public HttpReqResult update(@RequestBody List<User> users){
+        _log.info("全量更新");
+        for(User user : users) {
+            userSV.updateByPrimaryKey(user);
+        }
+        return new HttpReqResult(HttpReqResult.SUCCESS);
+    }
+
+
 }

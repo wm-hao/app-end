@@ -7,6 +7,8 @@ public class UserLoginInfo {
     private String key;
     private String value;
     private String userCode;
+    private String doctorCode;
+    private String adminCode;
 
     public String getPassword() {
         return password;
@@ -67,5 +69,21 @@ public class UserLoginInfo {
                 ", value='" + value + '\'' +
                 ", userCode='" + userCode + '\'' +
                 '}';
+    }
+
+    public String getDoctorCode() {
+        return doctorCode;
+    }
+
+    public void setDoctorCode(String doctorCode) {
+        this.doctorCode = doctorCode;
+    }
+
+    public String getAdminCode() {
+        return adminCode;
+    }
+
+    public void setAdminCode(String adminCode) {
+        this.adminCode = adminCode;
     }
 }

@@ -43,4 +43,8 @@ public interface DepartmentMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Department record);
+
+    Department selectByCode(String code);
+
+    Department selectByName(String name);
 }

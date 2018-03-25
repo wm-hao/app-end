@@ -14,4 +14,8 @@ public interface IAppDepartmentSV {
     int updateByPrimaryKey(Department record);
 
     Department selectByPrimaryKey(Integer id);
+
+    Department selectByCode(String code);
+
+    Department selectByName(String name);
 }

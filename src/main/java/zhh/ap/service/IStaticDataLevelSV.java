@@ -15,4 +15,6 @@ public interface IStaticDataLevelSV {
 
     StaticDataLevel selectByPrimaryKey(Integer id);
 
+    StaticDataLevel selectByCode(String code);
+
 }

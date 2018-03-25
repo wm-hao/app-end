@@ -37,4 +37,14 @@ public class AppDepartmentSVImpl implements IAppDepartmentSV {
     public Department selectByPrimaryKey(Integer id) {
         return dao.selectByPrimaryKey(id);
     }
+
+    @Override
+    public Department selectByCode(String code) {
+        return dao.selectByCode(code);
+    }
+
+    @Override
+    public Department selectByName(String name) {
+        return dao.selectByName(name + "%");
+    }
 }

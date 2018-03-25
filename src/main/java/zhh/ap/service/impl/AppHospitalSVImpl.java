@@ -14,7 +14,7 @@ public class AppHospitalSVImpl implements IAppHospitalSV {
     private HospitalMapper dao;
 
     @Override
-    public List<Hospital> selectAll() throws Exception {
+    public List<Hospital> selectAll() {
         return dao.selectAll();
     }
 
@@ -36,5 +36,25 @@ public class AppHospitalSVImpl implements IAppHospitalSV {
     @Override
     public Hospital selectByPrimaryKey(Integer id) {
         return dao.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public List<Hospital> selectByArea(String area) {
+        return dao.selectByArea(area);
+    }
+
+    @Override
+    public List<Hospital> selectByName(String area) {
+        return dao.selectByName(area + "%");
+    }
+
+    @Override
+    public List<Hospital> selectByLevel(String level) {
+        return dao.selectByLevel(level);
+    }
+
+    @Override
+    public Hospital selectByCode(String code) {
+        return dao.selectByCode(code);
     }
 }

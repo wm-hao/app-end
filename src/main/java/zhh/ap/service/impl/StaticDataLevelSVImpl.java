@@ -37,4 +37,9 @@ public class StaticDataLevelSVImpl implements IStaticDataLevelSV {
     public StaticDataLevel selectByPrimaryKey(Integer id) {
         return dao.selectByPrimaryKey(id);
     }
+
+    @Override
+    public StaticDataLevel selectByCode(String code) {
+        return dao.selectByCode(code);
+    }
 }

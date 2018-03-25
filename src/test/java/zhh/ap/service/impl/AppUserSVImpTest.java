@@ -9,6 +9,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 import zhh.ap.bean.User;
 import zhh.ap.service.IAppUserSV;
+import zhh.ap.util.security.SecurityUtil;
 
 @RunWith(SpringRunner.class)
 @ContextConfiguration(locations = {"classpath:spring/root.xml"})
@@ -43,6 +44,9 @@ public class AppUserSVImpTest {
 
     @Test
     public void updateByPrimaryKey() {
+        User user = userSV.selectUserInfoByIdCard("3406");
+        user.setPassword(SecurityUtil.getSHA256Str("zhuhh"));
+        userSV.updateByPrimaryKey(user);
     }
 
     @Test

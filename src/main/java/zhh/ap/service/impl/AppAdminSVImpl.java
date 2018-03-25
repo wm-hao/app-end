@@ -4,6 +4,7 @@ import org.springframework.stereotype.Service;
 import zhh.ap.bean.Admin;
 import zhh.ap.dao.AdminMapper;
 import zhh.ap.service.IAppAdminSV;
+import zhh.ap.util.security.SecurityUtil;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -36,5 +37,26 @@ public class AppAdminSVImpl implements IAppAdminSV {
     @Override
     public Admin selectByPrimaryKey(Integer id) {
         return dao.selectByPrimaryKey(id);
+    }
+
+    @Override
+    public boolean validate(String phoneNumber, String password) {
+        Admin admin = selectByPhoneNumber(phoneNumber);
+        return SecurityUtil.getSHA256Str(password).equals(admin == null?"":admin.getPassword());
+    }
+
+    @Override
+    public Admin selectByPhoneNumberAndEmail(String phoneNumber, String email) {
+        return dao.selectByPhoneNumberAndEmail(phoneNumber, email);
+    }
+
+    @Override
+    public Admin selectByIdCard(String idCard) {
+        return dao.selectByIdCard(idCard);
+    }
+
+    @Override
+    public Admin selectByPhoneNumber(String phoneNumber) {
+        return dao.selectByPhoneNumber(phoneNumber);
     }
 }

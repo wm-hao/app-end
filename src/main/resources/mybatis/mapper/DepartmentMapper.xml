@@ -57,4 +57,11 @@
     select id, name, code, description
     from app_department
   </select>
+  <select id="selectByCode" resultMap="BaseResultMap">
+    select * from app_department where code = #{0}
+  </select>
+
+  <select id="selectByName" resultMap="BaseResultMap">
+    select * from app_department where name like #{0}
+  </select>
 </mapper>

@@ -45,4 +45,10 @@ public interface AppointmentRecordMapper {
     int updateByPrimaryKey(AppointmentRecord record);
 
     List<AppointmentRecord> selectByUsercode(String userCode);
+
+    List<AppointmentRecord> selectByDoctorcode(String doctorCode);
+
+    AppointmentRecord selectByColumn(String columnName, String value);
+
+    AppointmentRecord selectByUserAndTime(String userCode, String appointTime);
 }

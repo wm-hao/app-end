@@ -43,4 +43,12 @@ public interface DoctorMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Doctor record);
+
+    Doctor selectByPhoneNumberAndEmail(String phoneNumber, String email);
+
+    Doctor selectByIdCard(String idCard);
+
+    Doctor selectByPhoneNumber(String phoneNumber);
+
+    Doctor selectByColumn(String columnName, String value);
 }

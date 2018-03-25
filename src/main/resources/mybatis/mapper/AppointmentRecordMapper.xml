@@ -91,7 +91,7 @@
     select id, user_code, user_name, opt_time, appoint_time, doctor_code, doctor_name, 
     hospital, department, disease, finish_time, fail_reason, hospital_code, hospital_name, 
     department_code, department_name
-    from app_appointment_record
+    from app_appointment_record ORDER BY  appoint_time DESC
   </select>
 
   <select id="selectByUsercode" parameterType="string" resultMap="BaseResultMap">
@@ -100,4 +100,15 @@
       department_code, department_name
     from app_appointment_record where user_code = #{0}
   </select>
+
+  <select id="selectByDoctorcode" resultMap="BaseResultMap">
+    SELECT * from app_appointment_record where doctor_code = #{0}
+  </select>
+
+    <select id="selectByColumn" resultMap="BaseResultMap">
+        SELECT * FROM app_appointment_record where #{0} = #{1}
+    </select>
+    <select id="selectByUserAndTime" resultMap="BaseResultMap">
+        SELECT * FROM app_appointment_record where user_code = #{0} and appoint_time = #{1}
+    </select>
 </mapper>

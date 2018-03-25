@@ -43,4 +43,6 @@ public interface ScheduleMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Schedule record);
+
+    Schedule seletByHospitalDepartDay(String hospitalCode, String departmentCode, String day);
 }

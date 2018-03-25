@@ -43,4 +43,6 @@ public interface StaticDataLevelMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(StaticDataLevel record);
+
+    StaticDataLevel selectByCode(String code);
 }

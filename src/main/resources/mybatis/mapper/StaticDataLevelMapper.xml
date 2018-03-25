@@ -55,4 +55,8 @@
     select id, name, code
     from sd_h_level
   </select>
+
+  <select id="selectByCode" resultMap="BaseResultMap">
+    select * from sd_h_level where code = #{0}
+  </select>
 </mapper>

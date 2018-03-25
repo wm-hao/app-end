@@ -15,4 +15,13 @@ public interface IAppDoctorSV {
 
     Doctor selectByPrimaryKey(Integer id);
 
+    boolean validate(String phoneNumber, String password);
+
+    Doctor selectByPhoneNumberAndEmail(String phoneNumber, String email);
+
+    Doctor selectByIdCard(String idCard);
+
+    Doctor selectByPhoneNumber(String phoneNumber);
+
+    Doctor selectByColumn(String columnName, String value);
 }

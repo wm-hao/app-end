@@ -16,4 +16,9 @@ public class AppConstants {
     public static final String RECORD_STATE_WAITING = "未完成";
     public static final String RECORD_STATE_DISCARD = "爽约";
 
+    public static final String APPOINT_SUCCESS = "0";
+    public static final String APPOINT_OVERLIMIT = "1";
+
+    public static final String ADMIN_AUTHORITY = "0";
+
 }

@@ -42,4 +42,20 @@ public class AppRecordSVImpl implements IAppRecordSV {
     public List<AppointmentRecord> selectByUsercode(String userCode) {
         return dao.selectByUsercode(userCode);
     }
+
+    @Override
+    public List<AppointmentRecord> selectByDoctorCode(String doctorCode) {
+        return dao.selectByDoctorcode(doctorCode);
+    }
+
+    @Override
+    public AppointmentRecord selectByColumn(String columnName, String value) {
+        return dao.selectByColumn(columnName, value);
+    }
+
+    @Override
+    public AppointmentRecord selectByUserAndTime(String userCode, String appointTime) {
+        return dao.selectByUserAndTime(userCode, appointTime);
+    }
+
 }

@@ -43,4 +43,12 @@ public interface HospitalMapper {
      * @mbggenerated
      */
     int updateByPrimaryKey(Hospital record);
+
+    List<Hospital> selectByArea(String area);
+
+    List<Hospital> selectByName(String area);
+
+    List<Hospital> selectByLevel(String level);
+
+    Hospital selectByCode(String code);
 }

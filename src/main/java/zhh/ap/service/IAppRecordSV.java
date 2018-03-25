@@ -17,4 +17,9 @@ public interface IAppRecordSV {
 
     List<AppointmentRecord> selectByUsercode(String userCode);
 
+    List<AppointmentRecord> selectByDoctorCode(String doctorCode);
+
+    AppointmentRecord selectByColumn(String columnName, String value);
+
+    AppointmentRecord selectByUserAndTime(String userCode, String appointTime);
 }
