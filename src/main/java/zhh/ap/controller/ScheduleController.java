@@ -79,6 +79,7 @@ public class ScheduleController {
             reqResult.setResult(HttpReqResult.FAIL);
             reqResult.setData("您填写的的预约日期" + schedule.getAppointDay() + "，已经是过去了！");
         }
+        schedule.setLeftLimit(schedule.getTotalLimit());
         reqResult.setResult(appScheduleSV.insert(schedule) == 1 ? HttpReqResult.SUCCESS : HttpReqResult.FAIL);
         return reqResult;
     }
