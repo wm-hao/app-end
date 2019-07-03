@@ -184,7 +184,7 @@ CREATE TABLE `app_doctor` (
 
 LOCK TABLES `app_doctor` WRITE;
 /*!40000 ALTER TABLE `app_doctor` DISABLE KEYS */;
-INSERT INTO `app_doctor` VALUES (6,'医生1',22,'普通医生','男','大师',NULL,'448826602@qq.com','13218020018','浙江省杭州市拱墅区','000001','13218020018','a25dec56fe51d8b685c91f610fc8a731ffdbaad568dca00744dcb6e743e916cd','343343123123123123','SJW001','北京协和医院','神经外科');
+INSERT INTO `app_doctor` VALUES (6,'医生1',22,'普通医生','男','大师',NULL,'@qq.com','13218020018','浙江省杭州市拱墅区','000001','13218020018','a25dec56fe51d8b685c91f610fc8a731ffdbaad568dca00744dcb6e743e916cd','343343123123123123','SJW001','北京协和医院','神经外科');
 /*!40000 ALTER TABLE `app_doctor` ENABLE KEYS */;
 UNLOCK TABLES;
 
